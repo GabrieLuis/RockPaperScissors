@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      PEDRA PAPEL TESOURA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="playerName !== '' ">
+
+  <ion-refresher slot="fixed" (ionRefresh)="atualizarPagina($event)">
+    <ion-refresher-content
+      pullingIcon="refresh"
+      pullingText="Reiniciar partida"
+      refreshingSpinner="crescent"
+      refreshingText="Reiniciando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid class="scoreboard" fixed>
+    <ion-row>
+
+      <ion-col size="5">
+        <ion-text class="ion-text-center"><h4> {{ playerName }} </h4></ion-text>
+        <ion-text class="ion-text-center"><h1> {{ playerPoints }} </h1></ion-text>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-text class="ion-text-center"><h1>x</h1></ion-text>
+      </ion-col>
+
+      <ion-col size="5">
+        <ion-text class="ion-text-center"><h4>Computador</h4></ion-text>
+        <ion-text class="ion-text-center"><h1> {{ computerPoints }} </h1></ion-text>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col size="6">
+        <ion-card>
+          <ion-img [src]="chosenOption"></ion-img>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-card>
+          <ion-img [src]="chooseComputer"></ion-img>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col size="6">
+        <ion-text class="ion-text-center" color="success" *ngIf="roundResult == 'Você venceu!' "><h2> {{ roundResult }} </h2></ion-text>
+        <ion-text class="ion-text-center" color="danger" *ngIf="roundResult == 'Você perdeu!' "><h2> {{ roundResult }} </h2></ion-text>
+        <ion-text class="ion-text-center" color="warning" *ngIf="roundResult == 'Empate!' "><h2> {{ roundResult }} </h2></ion-text>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-text class="ion-text-center" color="primary"><h2>Rodada {{ round }} </h2></ion-text>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <div class="options">
+    <ion-grid class="ion-padding" fixed>
+      <ion-row>
+  
+        <ion-col size="4">
+          <ion-card button (click)="play('rock')">
+            <img src="../../assets/rock.svg" alt="Pedra">
+            <ion-text class="ion-text-center"><p> Pedra </p></ion-text>
+          </ion-card>
+        </ion-col>
+  
+        <ion-col size="4">
+          <ion-card button (click)="play('paper')">
+            <img src="../../assets/paper.svg" alt="Papel">
+            <ion-text class="ion-text-center"><p> Papel </p></ion-text>
+          </ion-card>      
+        </ion-col>
+  
+        <ion-col size="4">
+          <ion-card button (click)="play('scissors')">
+              <img src="../../assets/scissors.svg" alt="Tesoura">
+              <ion-text class="ion-text-center"><p> Tesoura </p></ion-text>
+          </ion-card>
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  
+
+</ion-content>

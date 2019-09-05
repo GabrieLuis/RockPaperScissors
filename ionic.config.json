@@ -1,0 +1,7 @@
+{
+  "name": "RockPaperScissors",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
